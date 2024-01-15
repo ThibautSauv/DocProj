@@ -2,6 +2,8 @@
 
 ### [Paper](https://arxiv.org/abs/1909.09470)
 
+This is a fork from the DocProj repository to make the code executable from package calling. 
+
 The source code of Document Rectification and Illumination Correction using a Patch-based CNN by Xiaoyu Li, Bo Zhang, Jing Liao, Pedro V. Sander, SIGGRAPH Asia 2019.
 
 <img src='imgs/teaser.jpg' align="center" width=850> 
@@ -40,15 +42,14 @@ python train.py
 ### Use a Pre-trained Model
 You can download the pre-trained model [here](https://drive.google.com/open?id=1EPmFYd7OwfUZBLkJQ9sO8G1r5tLniKDh).
 
-Run the following command for resizing and cropping the test document image to local and global patches and estimating the patch flows:
-```bash
-python eval.py [--imgPath [PATH]] [--modelPath [PATH]]
-               [--saveImgPath [PATH]] [--saveFlowPath [PATH]]
+Run the following function for resizing and cropping the test document image to local and global patches and estimating the patch flows:
+```python
+execute(imgPath, modelPath, saveImgPath, saveFlowPath)
                
---imgPath             Path to input image
---modelPath           Path to pre-trained model
---saveImgPath         Path to saved cropped image
---saveFlowPath        Path to saved estimated flows
+imgPath             Path to input image
+modelPath           Path to pre-trained model
+saveImgPath         Path to saved cropped image
+saveFlowPath        Path to saved estimated flows
 ```
 
 ### Stitch flow
@@ -84,11 +85,12 @@ python train_illumination.py
 ### Use a Pre-trained Model
 You can download the pre-trained illNet model [here](https://drive.google.com/open?id=1EPmFYd7OwfUZBLkJQ9sO8G1r5tLniKDh) and pre-trained vgg model [here](https://drive.google.com/open?id=18hHB-sYkEMBndzbL8LJO2uV1pXltghxJ).
 
-Run the following command for testing:
-```bash
-python eval_illumination.py [--imgPath [PATH]] [--savPath [PATH]] [--modelPath [PATH]]
-                            
---imgPath             Path to input image
---savPath             Path to saved output
---modelPath           Path to pre-trained model
+You can use the function from the `eval_illumination.py` file:
+```python
+execute(imgPath, modelPath, savPath)
+
+imgPath             Path to input image
+savPath             Path to saved output
+modelPath           Path to pre-trained model
 ```
+
