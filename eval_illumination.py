@@ -164,11 +164,10 @@ def postProcess(img):
 # resImg.save(args.savPath)
 
 
-def execute(imgPath, modelPath, savPath):
-    img = io.imread(imgPath)
-    img = preProcess(img)
+def execute(cv2_img, modelPath):
+    img = preProcess(cv2_img)
     totalPatch = padCropImg(img)
     totalResults = illCorrection(modelPath, totalPatch)
     resImg = composePatch(totalResults)
     resImg = postProcess(resImg)
-    resImg.save(savPath)
+    return np.array(resImg)
